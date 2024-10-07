@@ -8,6 +8,7 @@ from .serializers import (PasswordResetConfirmSerializer,
 
 class RegisterUserView(APIView):
     permission_classes = [permissions.AllowAny]
+    serializer_class = UserRegisterSerializer
 
     def post(self, request):
         serializer = UserRegisterSerializer(data=request.data)
@@ -26,6 +27,7 @@ class RegisterUserView(APIView):
 
 class PasswordResetView(APIView):
     permission_classes = [permissions.AllowAny]
+    serializer_class = PasswordResetSerializer
 
     def post(self, request):
         serializer = PasswordResetSerializer(data=request.data)
@@ -40,6 +42,7 @@ class PasswordResetView(APIView):
 
 class PasswordResetConfirmView(APIView):
     permission_classes = [permissions.AllowAny]
+    serializer_class = PasswordResetConfirmSerializer
 
     def post(self, request):
         serializer = PasswordResetConfirmSerializer(data=request.data)
