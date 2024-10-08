@@ -26,12 +26,17 @@ class Migration(migrations.Migration):
                         verbose_name="ID",
                     ),
                 ),
-                ("title", models.CharField(max_length=200, verbose_name="title")),
+                (
+                    "title",
+                    models.CharField(max_length=200, verbose_name="title"),
+                ),
                 ("price", models.IntegerField(verbose_name="price")),
                 ("description", models.TextField(verbose_name="description")),
                 (
                     "created_at",
-                    models.DateTimeField(auto_now_add=True, verbose_name="created at"),
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="created at"
+                    ),
                 ),
                 (
                     "author",
@@ -63,7 +68,9 @@ class Migration(migrations.Migration):
                 ("text", models.TextField(verbose_name="text")),
                 (
                     "created_at",
-                    models.DateTimeField(auto_now_add=True, verbose_name="created at"),
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="created at"
+                    ),
                 ),
                 (
                     "ad",

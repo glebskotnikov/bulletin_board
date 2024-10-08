@@ -10,20 +10,28 @@ User = get_user_model()
 @pytest.fixture
 def test_ad(test_user, db):
     return Ad.objects.create(
-        title="Test Ad", price=100, description="Ad description", author=test_user
+        title="Test Ad",
+        price=100,
+        description="Ad description",
+        author=test_user,
     )
 
 
 @pytest.fixture
 def test_admin_ad(test_admin_user, db):
     return Ad.objects.create(
-        title="Test Ad", price=100, description="Ad description", author=test_admin_user
+        title="Test Ad",
+        price=100,
+        description="Ad description",
+        author=test_admin_user,
     )
 
 
 @pytest.fixture
 def test_review(test_user, test_ad, db):
-    return Review.objects.create(text="Test Review", author=test_user, ad=test_ad)
+    return Review.objects.create(
+        text="Test Review", author=test_user, ad=test_ad
+    )
 
 
 @pytest.fixture
@@ -39,7 +47,10 @@ def test_user(db):
 @pytest.fixture
 def test_admin_user(db):
     admin_user = User.objects.create(
-        email="admin@test.com", first_name="first", last_name="last", is_staff=True
+        email="admin@test.com",
+        first_name="first",
+        last_name="last",
+        is_staff=True,
     )
     admin_user.set_password("testpass")
     admin_user.save()

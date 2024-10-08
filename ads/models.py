@@ -7,9 +7,13 @@ class Ad(models.Model):
     price = models.IntegerField(verbose_name="price")
     description = models.TextField(verbose_name="description")
     author = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="author"
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        verbose_name="author",
     )
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name="created at")
+    created_at = models.DateTimeField(
+        auto_now_add=True, verbose_name="created at"
+    )
 
     class Meta:
         verbose_name = "abs"
@@ -23,7 +27,9 @@ class Ad(models.Model):
 class Review(models.Model):
     text = models.TextField(verbose_name="text")
     author = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="author"
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        verbose_name="author",
     )
     ad = models.ForeignKey(
         Ad,
@@ -31,7 +37,9 @@ class Review(models.Model):
         on_delete=models.CASCADE,
         verbose_name="advertisement",
     )
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name="created at")
+    created_at = models.DateTimeField(
+        auto_now_add=True, verbose_name="created at"
+    )
 
     class Meta:
         verbose_name = "review"

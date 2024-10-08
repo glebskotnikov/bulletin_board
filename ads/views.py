@@ -21,7 +21,9 @@ from .serializers import AdDetailSerializer, AdSerializer, ReviewSerializer
     update=extend_schema(
         summary="Modifying an existing ad",
     ),
-    partial_update=extend_schema(summary="Brief description of the partial change"),
+    partial_update=extend_schema(
+        summary="Brief description of the partial change"
+    ),
     retrieve=extend_schema(
         summary="Detailed information about the advertisement",
     ),
@@ -65,7 +67,9 @@ class AdViewSet(viewsets.ModelViewSet):
     update=extend_schema(
         summary="Modifying an existing review",
     ),
-    partial_update=extend_schema(summary="Brief description of the partial change"),
+    partial_update=extend_schema(
+        summary="Brief description of the partial change"
+    ),
     retrieve=extend_schema(
         summary="Detailed information about the review",
     ),

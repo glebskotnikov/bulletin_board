@@ -22,7 +22,9 @@ def test_ad_view_set_list(ad_view_set, test_user, test_admin_user, test_ad):
     assert response.data["results"][0]["title"] == "Test Ad"
 
 
-def test_ad_view_set_retrieve(ad_view_set, test_user, test_admin_user, test_ad):
+def test_ad_view_set_retrieve(
+    ad_view_set, test_user, test_admin_user, test_ad
+):
     """
     Tests successful retrieval of a specific Ad in AdViewSet retrieve view.
     """
@@ -74,7 +76,8 @@ def test_ad_view_set_create(ad_view_set, test_user):
     an authenticated user via AdViewSet 'create' view.
     """
     request = factory.post(
-        "/fake-path/", data={"title": "Test", "price": 100, "description": "Test"}
+        "/fake-path/",
+        data={"title": "Test", "price": 100, "description": "Test"},
     )
     force_authenticate(request, user=test_user)
     ad_create_view = AdViewSet.as_view({"post": "create"})

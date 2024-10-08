@@ -26,7 +26,10 @@ class Migration(migrations.Migration):
                         verbose_name="ID",
                     ),
                 ),
-                ("password", models.CharField(max_length=128, verbose_name="password")),
+                (
+                    "password",
+                    models.CharField(max_length=128, verbose_name="password"),
+                ),
                 (
                     "last_login",
                     models.DateTimeField(
@@ -60,7 +63,8 @@ class Migration(migrations.Migration):
                 (
                     "date_joined",
                     models.DateTimeField(
-                        default=django.utils.timezone.now, verbose_name="date joined"
+                        default=django.utils.timezone.now,
+                        verbose_name="date joined",
                     ),
                 ),
                 (
@@ -74,7 +78,10 @@ class Migration(migrations.Migration):
                 (
                     "phone",
                     models.CharField(
-                        blank=True, max_length=35, null=True, verbose_name="phone"
+                        blank=True,
+                        max_length=35,
+                        null=True,
+                        verbose_name="phone",
                     ),
                 ),
                 (
@@ -86,13 +93,17 @@ class Migration(migrations.Migration):
                 (
                     "role",
                     models.CharField(
-                        choices=[("user", "User"), ("admin", "Admin")], max_length=10
+                        choices=[("user", "User"), ("admin", "Admin")],
+                        max_length=10,
                     ),
                 ),
                 (
                     "image",
                     models.ImageField(
-                        blank=True, null=True, upload_to="users/", verbose_name="avatar"
+                        blank=True,
+                        null=True,
+                        upload_to="users/",
+                        verbose_name="avatar",
                     ),
                 ),
                 (

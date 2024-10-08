@@ -23,12 +23,16 @@ def test_password_reset_serializer_save(user):
 
 
 @pytest.mark.django_db
-def test_password_reset_confirm_serializer_save(user, password_reset_confirm_data):
+def test_password_reset_confirm_serializer_save(
+    user, password_reset_confirm_data
+):
     """
     Test the PasswordResetConfirmSerializer's validity
     and its ability to change the user's password.
     """
-    serializer = PasswordResetConfirmSerializer(data=password_reset_confirm_data)
+    serializer = PasswordResetConfirmSerializer(
+        data=password_reset_confirm_data
+    )
     assert serializer.is_valid()
     new_password = "newpass1234"
     assert user.check_password(new_password) is False

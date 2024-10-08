@@ -38,7 +38,9 @@ def test_password_reset_view(api_client, user):
 
 
 @pytest.mark.django_db
-def test_password_reset_confirm_view(api_client, user, password_reset_confirm_data):
+def test_password_reset_confirm_view(
+    api_client, user, password_reset_confirm_data
+):
     """
     Test password reset confirmation view to assert success response.
     """

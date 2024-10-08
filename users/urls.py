@@ -12,7 +12,9 @@ app_name = UsersConfig.name
 urlpatterns = [
     # users
     path("register/", RegisterUserView.as_view(), name="register"),
-    path("reset_password/", PasswordResetView.as_view(), name="reset_password"),
+    path(
+        "reset_password/", PasswordResetView.as_view(), name="reset_password"
+    ),
     path(
         "reset_password_confirm/",
         PasswordResetConfirmView.as_view(),

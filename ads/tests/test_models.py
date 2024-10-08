@@ -61,7 +61,10 @@ def test_ad_length_limit(test_user, db):
     long_string = "a" * 201
     with pytest.raises(Exception):
         Ad.objects.create(
-            title=long_string, price=100, description="Ad description", author=test_user
+            title=long_string,
+            price=100,
+            description="Ad description",
+            author=test_user,
         )
 
 
@@ -80,7 +83,10 @@ def test_user_deletion_cascades(test_user, db):
     Test that when a user is deleted, all their ads are deleted.
     """
     test_ad = Ad.objects.create(
-        title="Test Ad", price=100, description="Ad description", author=test_user
+        title="Test Ad",
+        price=100,
+        description="Ad description",
+        author=test_user,
     )
     test_user.delete()
     assert not Ad.objects.filter(title=test_ad.title).exists()
@@ -91,10 +97,16 @@ def test_ad_ordering(test_user, db):
     Test that advertisements are ordered correctly.
     """
     first_ad = Ad.objects.create(
-        title="First", price=100, description="Ad description", author=test_user
+        title="First",
+        price=100,
+        description="Ad description",
+        author=test_user,
     )
     second_ad = Ad.objects.create(
-        title="Second", price=100, description="Ad description", author=test_user
+        title="Second",
+        price=100,
+        description="Ad description",
+        author=test_user,
     )
     assert list(Ad.objects.all()) == [second_ad, first_ad]
 
