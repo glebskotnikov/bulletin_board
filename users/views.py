@@ -1,12 +1,24 @@
+from drf_spectacular.utils import extend_schema
 from rest_framework import permissions, status
+from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework_simplejwt.views import (TokenObtainPairView,
+                                            TokenRefreshView)
 
 from .serializers import (PasswordResetConfirmSerializer,
                           PasswordResetSerializer, UserRegisterSerializer)
 
 
+@extend_schema(
+    tags=["Users"],
+    summary="Register a new user",
+)
 class RegisterUserView(APIView):
+    """
+    API endpoint that allows new users to register.
+    """
+
     permission_classes = [permissions.AllowAny]
     serializer_class = UserRegisterSerializer
 
@@ -25,7 +37,15 @@ class RegisterUserView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+@extend_schema(
+    tags=["Users"],
+    summary="Password reset",
+)
 class PasswordResetView(APIView):
+    """
+    API view for initiating a password reset request.
+    """
+
     permission_classes = [permissions.AllowAny]
     serializer_class = PasswordResetSerializer
 
@@ -43,7 +63,15 @@ class PasswordResetView(APIView):
             )
 
 
+@extend_schema(
+    tags=["Users"],
+    summary="Confirming a password reset",
+)
 class PasswordResetConfirmView(APIView):
+    """
+    API view for confirming a password reset request.
+    """
+
     permission_classes = [permissions.AllowAny]
     serializer_class = PasswordResetConfirmSerializer
 
@@ -59,3 +87,19 @@ class PasswordResetConfirmView(APIView):
             return Response(
                 serializer.errors, status=status.HTTP_400_BAD_REQUEST
             )
+
+
+@extend_schema(
+    tags=["Users"],
+    summary="Login a user and obtain token pair",
+)
+class CustomTokenObtainPairView(TokenObtainPairView):
+    permission_classes = (AllowAny,)
+
+
+@extend_schema(
+    tags=["Users"],
+    summary="Refresh token",
+)
+class CustomTokenRefreshView(TokenRefreshView):
+    permission_classes = (AllowAny,)
